@@ -9,13 +9,13 @@ categories: [codetest]
 
 정답률도 높은 편이고 꽤 쉬운 문제인 것 같다.
 
-처음에 청소를 전진 후진시 다하는 줄 알고 애먹었지만. 
+처음에 청소를 전진 후진시 다하는 줄 알고 애먹었지만.
 
 디버깅을 단계별로 해보며 문제를 해결했다.
 
 풀이 시간 : 1시간 11분
 
-{% highlight ruby %}
+~~~c++
 #include <iostream>
 using namespace std;
 
@@ -33,34 +33,25 @@ void clean()
 {
 	map[y][x] = 2;
 	sum++;
-	/*cout << "direct: " << d << endl;
-	for (int i = 0;i < m;++i)
-	{
-		for (int j = 0;j < n;++j)
-		{
-			cout << map[i][j] << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;*/
+
 }
 int robot()
 {
-	clean();//현재위치 청소
+	clean(); /*현재위치 청소*/
 	while (1)
 	{
-		
+
 		for (int i = 0;i < 4;i++)
 		{
-			turn_left();//1. 왼쪽으로 돈다.
-			if (dirty_nowall(1))//앞쪽에 벽이 아니고 더러운지 확인
+			turn_left(); /*1. 왼쪽으로 돈다.*/
+			if (dirty_nowall(1)) /*앞쪽에 벽이 아니고 더러운지 확인*/
 			{
-				go(1);//앞쪽으로 전진
+				go(1); /*앞쪽으로 전진*/
 				clean();
 				i = -1;
 			}
 		}
-		if (dirty_nowall(2))//후진 가능하면
+		if (dirty_nowall(2)) /*후진 가능하면*/
 		{
 			go(2);
 			continue;
@@ -103,83 +94,83 @@ int last_direct(int d,int f_b)
 	}
 }
 bool dirty_nowall(int f_b)
-{//전진 1 후진 2
+{ /*전진 1 후진 2*/
 	int real=last_direct(d, f_b);
 
 	if (real == 0)
-	{//0 북쪽 
+	{ /*0 북쪽*/
 		if (y - 1 < 0 )
 			return false;
 		if (f_b == 2&& map[y - 1][x] != 1)
 			return true;
-		if (map[y - 1][x] == 0)//dirty
+		if (map[y - 1][x] == 0) /*dirty*/
 			return true;
 		else
 			return false;
 	}
 	else if (real == 1)
-	{//1 동쪽
+	{ /*1 동쪽*/
 		if (x + 1 > n-1)
 			return false;
 		if (f_b == 2 && map[y][x+1] != 1)
 			return true;
-		if (map[y][x+1] == 0)//dirty
+		if (map[y][x+1] == 0) /*dirty*/
 			return true;
 		else
 			return false;
 	}
 	else if (real == 2)
-	{//2 남쪽
+	{ /*2 남쪽*/
 		if (y + 1 > m-1)
 			return false;
 		if (f_b == 2 && map[y + 1][x] != 1)
 			return true;
-		if (map[y + 1][x] == 0)//dirty
+		if (map[y + 1][x] == 0) /*dirty*/
 			return true;
 		else
 			return false;
 	}
 	else if (real == 3)
-	{//3 서쪽
+	{/*3 서쪽*/
 		if (x - 1 < 0)
 			return false;
 		if (f_b == 2 && map[y][x-1] != 1)
 			return true;
-		if (map[y][x-1] == 0)//dirty
+		if (map[y][x-1] == 0) /*dirty*/
 			return true;
 		else
 			return false;
 	}
 }
-void go(int f_b)//전진
-{//1 전진
-// 2 후진
+void go(int f_b) /*전진*/
+{ /*1 전진*/
+  /*2 후진*/
 	if (f_b == 2)
 		f_b = -1;
 	if (d == 0)
-	{//0 북쪽 
-		y = y + (-1)*f_b;
+	{ /*0 북쪽*/
+		y = y + (-1) * f_b;
 	}
 	else if (d == 1)
-	{//1 동쪽
-		x = x + (1)*f_b;
+	{ /*1 동쪽*/
+		x = x + (1) * f_b;
 	}
 	else if (d == 2)
-	{//2 남쪽
-		y = y + (1)*f_b;
+	{ /*2 남쪽*/
+		y = y + (1) * f_b;
 	}
 	else if (d == 3)
-	{//3 서쪽
-		x = x + (-1)*f_b;
+	{ /*3 서쪽*/
+		x = x + (-1) * f_b;
 	}
-	
+
 }
 
 int main()
 {
 	cin >> m >> n;
-	
-	
+
+
 	cin >> y >> x >> d;
 	for (int i = 0;i < m;++i)
 	{
@@ -191,6 +182,6 @@ int main()
 
 	cout << robot() << endl;
 }
-{% endhighlight %}
+~~~
 
 [문제링크]: https://www.acmicpc.net/problem/14503
