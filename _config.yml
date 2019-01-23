@@ -25,6 +25,7 @@ github_username:  Seo-GwangHyeon
 markdown: kramdown
 
 disqus_url: Seo-GwangHyeon.disqus.com
+disqus_shortname: Seo-GwangHyeon.disqus.com
 disqus_id: Seo-GwangHyeon
 highlighter: rouge
 # text highlighter로 rouge이용
