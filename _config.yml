@@ -24,6 +24,8 @@ github_username:  Seo-GwangHyeon
 # Build settings
 markdown: kramdown
 
+disqus_url: Seo-GwangHyeon.disqus.com
+disqus_id: Seo-GwangHyeon
 highlighter: rouge
 # text highlighter로 rouge이용
 # 2016.02월 이후로 syntax highlighter는 rouge만 지원.
